@@ -99,7 +99,7 @@ The sample dataset is included so you can experiment with it~ especially if you 
 ## 📁 Project Structure
 
 ```
-ChemZiRo-FIE/
+ChemMiniQ3-HoriFIE/
 ├── ChemQ3MTP.py            # Custom model definition
 |── train-withmtp.py        # Main trainer for MTP with curriculum training combining NTP with MTP 
 |── config.json             # Configuration for model definition and training
@@ -234,6 +234,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
