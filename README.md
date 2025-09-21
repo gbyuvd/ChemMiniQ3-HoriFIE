@@ -16,7 +16,8 @@ A custom Qwen3-style language model, adapted for molecular generation:
 - ✅ **SELFIES-native Tokenizer** – Robust encoding for valid molecular structures with [FastChemTokenizer](https://github.com/gbyuvd/FastChemTokenizer)
 - ✅ **Ranger21 Optimizer** – Adaptive optimizer with warmup/warmdown scheduling  
 - ✅ **Gradient Checkpointing** – Trainable on smaller GPUs  
-- ✅ **Streaming Datase Loader** – Trainable on smaller RAM 
+- ✅ **Streaming Datase Loader** – Trainable on smaller RAM  
+
 Experimental RL PPO-KL-ready features:
 - ✅ **Enhanced Reward Functions** – Validity, Lipinski, charge neutrality, diversity, complexity  
 - ✅ **Curriculum Learning** – Gradually increases generation length during training  
@@ -232,6 +233,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
