@@ -4,8 +4,8 @@ An experimental lightweight generative model for chemistry, built on mini **Qwen
 *Prototype research code — not production-ready. Learning by building.*
 
 <p align="center">
-  <img src="./img/output1.PNG" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
-  <img src="./img/output2.PNG" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
+  <img src="./img/output1.png" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
+  <img src="./img/output2.png" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
 </p>
 
 A custom Qwen3-style language model, adapted for molecular generation:
@@ -65,7 +65,8 @@ Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU, RAM 12 GB, 2 co
 - Make sure you have the requierements installed
 - Configurable via `config.json`
 - Run `python train-withmtp.py`
-- Demo for generation with rendered mol image included in `demo_test_mtpresult.ipynb` 
+- Demo for generation with rendered mol image included in `demo_test_mtpresult.ipynb`
+  - For demo please extract the `pretrained.7z` archive
 
 Tip: feel free to play around with the ChemQ3Model and its training loop/configs! 
 The sample dataset is included so you can experiment with it~ especially if you have better compute than mine, feel free to share your results in discussion
@@ -231,4 +232,5 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
