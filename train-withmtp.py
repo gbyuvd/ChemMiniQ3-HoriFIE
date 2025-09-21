@@ -74,7 +74,7 @@ class LossLoggerCallback(TrainerCallback):
 
 
 def main():
-    # --- Load your custom tokenizer ---
+    # --- Load the tokenizer ---
     tokenizer = FastChemTokenizerSelfies.from_pretrained("../selftok_core")
 
     out = tokenizer("[C] [=C] [Branch1]", return_tensors="pt")
@@ -83,7 +83,7 @@ def main():
     out = out.to("cuda" if torch.cuda.is_available() else "cpu")
     print(out.input_ids.device)
 
-    # --- Define enhanced config ---
+    # --- Define config ---
     config = Qwen3Config(
         vocab_size=len(tokenizer),
         bos_token_id=tokenizer.bos_token_id,
@@ -266,7 +266,7 @@ def main():
         warmup_steps = max(1, total_steps // 5)
         trainer.args.max_steps = warmup_steps
         trainer.train()
-        print("\n🔥 Phase 2: Full MTP + Horizon Loss training...")
+        print("\n Phase 2: Full MTP + Horizon Loss training...")
         model.set_mtp_training(True)
         trainer.args.max_steps = total_steps
         trainer.train(resume_from_checkpoint=True)
@@ -284,7 +284,7 @@ def main():
         config_path = "./enhanced-qwen3-final/training_config.json"
         with open(config_path, "w") as f:
             json.dump(training_config, f, indent=2)
-        print(f"✅ Enhanced model, tokenizer, and config saved!")
+        print(f" Enhanced model, tokenizer, and config saved!")
     except Exception as e:
         print(f"Enhanced training failed with error: {e}")
         import traceback
@@ -359,7 +359,7 @@ def main():
     print(f"- MTP Future Tokens: {model.mtp_head.num_future_tokens}")
     print(f"- Horizon Loss Weights: Learnable")
     print(f"- Training Mode: {'MTP + Horizon Loss' if model.use_mtp_training else 'Standard Causal LM'}")
-    print("\n🎉 Enhanced training pipeline completed successfully!")
+    print("\n Enhanced training pipeline completed successfully!")
 
 if __name__ == "__main__":
     main()

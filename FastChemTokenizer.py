@@ -145,7 +145,7 @@ class FastChemTokenizer:
         return "".join(tokens)
 
     def decode_with_trace(self, token_ids: List[int]) -> None:
-        print(f"\n🔍 Decoding {len(token_ids)} tokens:")
+        print(f"\n Decoding {len(token_ids)} tokens:")
         for i, tid in enumerate(token_ids):
             token = self.id_to_token.get(tid, self.unk_token)
             print(f"  [{i:03d}] ID={tid:5d} → '{token}'")
@@ -300,7 +300,7 @@ class FastChemTokenizer:
         with open(vocab_file, "w", encoding="utf-8") as f:
             json.dump(self.token_to_id, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ Tokenizer vocab saved to: {vocab_file}")
+        print(f" Tokenizer vocab saved to: {vocab_file}")
 
     # Load from pretrained directory
     @classmethod
@@ -440,11 +440,11 @@ class FastChemTokenizerSelfies:
             token = self.id_to_token.get(tid, self.unk_token)
             tokens.append(token)
 
-        # ✅ Join with SPACE between tokens — this reconstructs original format
+        # Join with SPACE between tokens — this reconstructs original format
         return " ".join(tokens)
 
     def decode_with_trace(self, token_ids: List[int]) -> None:
-        print(f"\n🔍 Decoding {len(token_ids)} tokens:")
+        print(f"\n Decoding {len(token_ids)} tokens:")
         for i, tid in enumerate(token_ids):
             token = self.id_to_token.get(tid, self.unk_token)
             print(f"  [{i:03d}] ID={tid:5d} → '{token}'")
@@ -599,7 +599,7 @@ class FastChemTokenizerSelfies:
         with open(vocab_file, "w", encoding="utf-8") as f:
             json.dump(self.token_to_id, f, ensure_ascii=False, indent=2)
 
-        print(f"✅ Tokenizer vocab saved to: {vocab_file}")
+        print(f"Tokenizer vocab saved to: {vocab_file}")
 
     # Load from pretrained directory
     @classmethod

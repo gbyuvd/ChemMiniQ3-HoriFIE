@@ -300,7 +300,7 @@ class ChemQ3MTP(Qwen3ForCausalLM):
         self,
         input_ids: Optional[torch.LongTensor] = None,
         attention_mask: Optional[torch.FloatTensor] = None,
-        labels: Optional[torch.LongTensor] = None,  # ⬅️ ADDED
+        labels: Optional[torch.LongTensor] = None,  
         **kwargs
     ):
         # Default mask if not provided
@@ -314,7 +314,7 @@ class ChemQ3MTP(Qwen3ForCausalLM):
         outputs = super().forward(
             input_ids=input_ids,
             attention_mask=attention_mask,
-            labels=None,  # ⬅️ We handle loss ourselves, don't let base class do it
+            labels=None,  
             **kwargs
         )
 
@@ -322,12 +322,12 @@ class ChemQ3MTP(Qwen3ForCausalLM):
         lm_logits = outputs.logits
         loss = None
 
-        if self.training and self.use_mtp_training and labels is not None:  # ✅ labels, not kwargs
+        if self.training and self.use_mtp_training and labels is not None:  # labels, not kwargs
             mtp_outputs = self.mtp_head(hidden_states)
             horizon_loss_dict = self.horizon_loss(mtp_outputs, input_ids, attention_mask)
 
             shift_logits = lm_logits[..., :-1, :].contiguous()
-            shift_labels = labels[..., 1:].contiguous()  # ✅ labels, not kwargs["labels"]
+            shift_labels = labels[..., 1:].contiguous()  # labels, not kwargs["labels"]
 
             if attention_mask is not None:
                 shift_mask = attention_mask[..., 1:].contiguous()
@@ -345,9 +345,9 @@ class ChemQ3MTP(Qwen3ForCausalLM):
 
             loss = 0.7 * horizon_loss_dict['loss'] + 0.3 * causal_lm_loss
 
-        elif labels is not None:  # ✅ labels, not kwargs.get("labels")
+        elif labels is not None:  #  labels, not kwargs.get("labels")
             shift_logits = lm_logits[..., :-1, :].contiguous()
-            shift_labels = labels[..., 1:].contiguous()  # ✅ labels, not kwargs["labels"]
+            shift_labels = labels[..., 1:].contiguous()  #  labels, not kwargs["labels"]
             loss = F.cross_entropy(
                 shift_logits.view(-1, shift_logits.size(-1)),
                 shift_labels.view(-1)
@@ -593,7 +593,7 @@ class CurriculumManager:
         self.step_counter += 1
         if self.step_counter % self.steps_per_level == 0 and self.current_max_len < self.max_len:
             self.current_max_len = min(self.current_max_len + self.step_increase, self.max_len)
-            print(f"📈 Curriculum Update: max_new_tokens = {self.current_max_len}")
+            print(f" Curriculum Update: max_new_tokens = {self.current_max_len}")
         return self.current_max_len
 
 class AdaptiveKLController:
