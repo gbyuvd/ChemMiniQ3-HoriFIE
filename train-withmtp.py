@@ -75,7 +75,7 @@ class LossLoggerCallback(TrainerCallback):
 
 def main():
     # --- Load the tokenizer ---
-    tokenizer = FastChemTokenizerSelfies.from_pretrained("../selftok_core")
+    tokenizer = FastChemTokenizerSelfies.from_pretrained("./selftok_core")
 
     out = tokenizer("[C] [=C] [Branch1]", return_tensors="pt")
     print(out.input_ids)
@@ -117,7 +117,7 @@ def main():
     print("Loading dataset...")
     dataset = load_dataset(
         'csv',
-        data_files='../data/sample_all_14k.csv',
+        data_files='./data/sample_all_14k.csv',
         split='train',
         streaming=True
     )
