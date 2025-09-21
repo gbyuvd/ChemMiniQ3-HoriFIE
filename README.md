@@ -68,6 +68,7 @@ Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU (2GB VRAM), RAM 
 - Run `python train-withmtp.py`
 - Demo for generation with rendered mol image included in `demo_test_mtpresult.ipynb`
   - For demo please extract the `pretrained.7z` archive
+- For testing the prototype PPO-KL RL fine-tuning, try running `train_ppokl_selfies.py` on the pretrained model (please make sure the model location is correct)
 
 Tip: feel free to play around with the ChemQ3Model and its training loop/configs! 
 The sample dataset is included so you can experiment with it~ especially if you have better compute than mine, feel free to share your results in discussion
@@ -100,10 +101,11 @@ The sample dataset is included so you can experiment with it~ especially if you 
 
 ```
 ChemZiRo-FIE/
-├── ChemQ3MTP.py          # Custom model definition
-|── train-withmtp.py      # Main trainer for MTP with curriculum training combining NTP with MTP     
-|── config.json           # Configuration for model definition and training
-|── FastChemTokenizer.py  # FastChemTokenizer module
+├── ChemQ3MTP.py            # Custom model definition
+|── train-withmtp.py        # Main trainer for MTP with curriculum training combining NTP with MTP 
+|── config.json             # Configuration for model definition and training
+|── FastChemTokenizer.py    # FastChemTokenizer module
+|── train_ppokl_selfies.py  # Prototype PPO-KL RL training script
 ├── README.md               
 ├── requirements.txt      # I'd recommend making a conda env for this or you could try using different 
                             versions and please note if you encounter a bug
@@ -233,6 +235,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
