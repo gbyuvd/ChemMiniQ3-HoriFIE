@@ -1,0 +1,139 @@
+python train-withmtp.py
+tensor([[  0, 363, 717,   1]])
+tensor([[1, 1, 1, 1]])
+cuda:0
+Enhanced model has 9,854,851 trainable parameters.
+Input shape: torch.Size([2, 32])
+Logits shape: torch.Size([2, 32, 782])
+Loading dataset...
+Shuffling and splitting dataset...
+Dataset split: train=11200, val=1400, test=1400
+Tokenizing datasets...
+Initializing enhanced trainer with MTP capabilities...
+✅ MTP training mode enabled
+Starting enhanced training with MTP and Horizon Loss...
+
+🚀 Phase 1: Warmup with standard Causal LM...
+Ranger21 optimizer ready with following settings:
+
+Core optimizer = madgrad
+Learning rate of 5e-05
+
+Important - num_epochs of training = ** 1 epochs **
+please confirm this is correct or warmup and warmdown will be off
+
+using AdaBelief for variance computation
+Warm-up: linear warmup, over 154 iterations
+
+Lookahead active, merging every 5 steps, with blend factor of 0.5
+Norm Loss active, factor = 0.0001
+Stable weight decay of 0.01
+Gradient Centralization = On
+
+Adaptive Gradient Clipping = True
+        clipping value of 0.01
+        steps for clipping = 0.001
+
+Warm-down: Linear warmdown, starting at 72.0%, iteration 504 of 700
+warm down will decay until 3e-05 lr
+  0%|                                                                                                                                          | 0/140 [00:00<?, ?it/s]params size saved
+total param groups = 1
+total params in groups = 75
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 140/140 [08:39<00:00,  4.08s/it]✅ Tokenizer vocab saved to: ./chemq3minipret\checkpoint-140\vocab.json
+{'train_runtime': 522.4127, 'train_samples_per_second': 17.151, 'train_steps_per_second': 0.268, 'train_loss': 13.13411865234375, 'epoch': 1.0}
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 140/140 [08:42<00:00,  3.73s/it]
+
+🔥 Phase 2: Full MTP + Horizon Loss training...
+There were missing keys in the checkpoint model loaded: ['lm_head.weight'].
+Ranger21 optimizer ready with following settings:
+
+Core optimizer = madgrad
+Learning rate of 5e-05
+
+Important - num_epochs of training = ** 1 epochs **
+please confirm this is correct or warmup and warmdown will be off
+
+using AdaBelief for variance computation
+Warm-up: linear warmup, over 154 iterations
+
+Lookahead active, merging every 5 steps, with blend factor of 0.5
+Norm Loss active, factor = 0.0001
+Stable weight decay of 0.01
+Gradient Centralization = On
+
+Adaptive Gradient Clipping = True
+        clipping value of 0.01
+        steps for clipping = 0.001
+
+Warm-down: Linear warmdown, starting at 72.0%, iteration 504 of 700
+warm down will decay until 3e-05 lr
+  0%|                                                                                                                                          | 0/700 [00:00<?, ?it/s]params size saved
+total param groups = 1
+total params in groups = 75
+{'loss': 20.4449, 'grad_norm': 5.31291389465332, 'learning_rate': 5e-05, 'epoch': 0.25}
+{'eval_loss': 2.687195301055908, 'eval_runtime': 15.1492, 'eval_samples_per_second': 92.414, 'eval_steps_per_second': 5.809, 'epoch': 0.25}
+ 42%|█████████████████████████████████████████████████████▊                                                                          | 294/700 [10:05<30:24,  4.49s/it]
+** Ranger21 update = Warmup complete - lr set to 5e-05
+
+{'loss': 10.405, 'grad_norm': 2.3612701892852783, 'learning_rate': 5e-05, 'epoch': 1.25}
+{'eval_loss': 1.9965996742248535, 'eval_runtime': 15.3364, 'eval_samples_per_second': 91.286, 'eval_steps_per_second': 5.738, 'epoch': 1.25}
+{'loss': 8.9447, 'grad_norm': 2.242906332015991, 'learning_rate': 5e-05, 'epoch': 2.25}
+{'eval_loss': 1.8333336114883423, 'eval_runtime': 15.271, 'eval_samples_per_second': 91.677, 'eval_steps_per_second': 5.763, 'epoch': 2.25}
+ 92%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌          | 643/700 [33:06<05:13,  5.49s/it]
+** Ranger21 update: Warmdown starting now.  Current iteration = 504....
+
+{'loss': 8.2911, 'grad_norm': 2.4141907691955566, 'learning_rate': 5e-05, 'epoch': 3.25}
+{'eval_loss': 1.7291985750198364, 'eval_runtime': 15.2593, 'eval_samples_per_second': 91.748, 'eval_steps_per_second': 5.767, 'epoch': 3.25}
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 700/700 [36:40<00:00,  3.81s/it]✅ Tokenizer vocab saved to: ./chemq3minipret\checkpoint-700\vocab.json
+{'train_runtime': 2202.3032, 'train_samples_per_second': 20.342, 'train_steps_per_second': 0.318, 'train_loss': 7.932438441685268, 'epoch': 3.25}
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 700/700 [36:42<00:00,  3.15s/it]
+Enhanced training completed successfully!
+✅ Tokenizer vocab saved to: ./enhanced-qwen3-final\vocab.json
+✅ Tokenizer vocab saved to: ./enhanced-qwen3-final\vocab.json
+✅ Enhanced model, tokenizer, and config saved!
+
+🧪 Testing enhanced generation capabilities...
+
+--- Standard Generation Test ---
+Generated SELFIES 1: [C] [Ring1] [Ring1] [C] [C] [Branch1] [N] [C] [=C] [C] [=C] [Branch1] [C] [F] [C] [=C] [Ring1] [#Branch1] [N] [Branch1] [C] [C] [C] [C] [C] [Ring1] [S]
+Generated SELFIES 2: [C] [=N+1] [Branch1] [C] [O-1] [C] [=C] [C] [=C] [Branch2] [Ring1] [#Branch2] [N] [C@H1] [C@H1] [Branch1] [#Branch2] [C] [C] [=C] [C] [=C] [C] [=C] [Ring1] [=Branch1] [C] [=C] [C] [=C] [C] [=C] [Ring1] [=Branch1] [C] [Ring2] [Ring1] [C] [=O]
+Generated SELFIES 3: [C] [=C] [C] [=C] [Branch1] [S] [C] [=Branch1] [C] [=O] [N] [C] [C] [=C] [C] [=C] [C] [=C] [Ring1] [=Branch1] [C] [=C] [C] [=C] [C] [=C] [Ring1] [=Branch1] [F]
+
+--- MTP Analysis Test ---
+Input SELFIES: [C]
+Tokenized: ['<s>', '[C]', '</s>']
+
+logits_t1 predictions:
+  Position 0: [C] [C](0.024), [C] [O] [C] [=C] [C] [=C] [Branch2] [Ring1](0.017), [C] [C] [Branch1] [C] [C] [C](0.015)
+  Position 1: [O](0.453), [Branch1](0.170), [=Branch1](0.106)
+  Position 2: .[N](0.190), .[C](0.108), [P](0.067)
+
+logits_t2 predictions:
+  Position 0: [Branch1](0.150), [=C](0.125), [Ring1](0.081)
+  Position 1: [C](0.111), [Ring1](0.086), [C@@H1](0.083)
+  Position 2: [Branch1](0.109), [=Branch1](0.085), [Branch2](0.081)
+
+logits_t3 predictions:
+  Position 0: [Branch1](0.126), [Ring1](0.100), [C](0.096)
+  Position 1: [Branch2](0.250), [Branch1](0.103), [=Branch1](0.072)
+  Position 2: [C](0.192), [Branch1](0.086), [Branch2](0.080)
+
+✅ Enhanced generation tests completed!
+
+📊 Enhanced Model Analysis:
+Total parameters: 9,854,851
+Base model parameters: 9,102,528
+MTP head parameters: 752,320
+Horizon loss parameters: 3
+Enhancement overhead: 8.26%
+
+🗝️ Enhanced Model Architecture:
+- Base Model: Qwen3 with 6 layers
+- Hidden Size: 320
+- Attention Heads: 4
+- Vocab Size: 782
+- MTP Future Tokens: 3
+- Horizon Loss Weights: Learnable
+- Training Mode: MTP + Horizon Loss
+
+🎉 Enhanced training pipeline completed successfully!
