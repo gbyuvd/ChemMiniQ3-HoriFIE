@@ -56,7 +56,7 @@ time	step	              loss	eval_loss
 2025-09-21 12:28:49	700		        1.7291985750198364
 2025-09-21 12:28:51	700		
 
-Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU, RAM 12 GB, 2 core Intel i3, SSD
+Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU (2GB VRAM), RAM 12 GB, 2 cores Intel i3, SSD
 ```
 
 ## 🚀 Quick Start
@@ -232,5 +232,6 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
