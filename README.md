@@ -44,10 +44,11 @@ Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU, RAM 12 GB, 2 co
 
 ## 🚀 Quick Start
 
-- Configurable via 'config.json'
-- Run 'python train-withmtp.py'
-- Demo for generation with rendered mol image included in 'demo_test.ipynb'
-Tip: feel free to play around the ChemQ3Model and the training loop/configs! The sample dataset is included so you can experiment with it~
+- Configurable via `config.json`
+- Run `python train-withmtp.py` to train
+- Demo for generation with rendered mol image included in `demo_test.ipynb`
+
+Tip: feel free to play around with the ChemQ3Model and its training loop/configs! The sample dataset is included so you can experiment with it~ Especially if you have better compute than mine, feel free to share your results in discussion
 
 ## To-Do
 - [x] Adjust FastChemTokenizer tokenizer on new data
@@ -208,4 +209,5 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
