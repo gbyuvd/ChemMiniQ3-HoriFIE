@@ -1,5 +1,5 @@
 # 🧬 ChemMiniQ3 - with Horizon Loss on SELFIES
-An experimental lightweight generative model for chemistry, built on mini **Qwen3** with **multi-horizon predictive loss** for molecular SELFIES representations.
+A lightweight experimental generative model for chemistry, built on mini **Qwen3** with **multi-horizon predictive loss** for molecular SELFIES representations.
 
 *Prototype research code — not production-ready. Learning by building.*
 
@@ -232,6 +232,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
