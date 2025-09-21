@@ -4,8 +4,8 @@ An experimental lightweight generative model for chemistry, built on mini **Qwen
 *Prototype research code — not production-ready. Learning by building.*
 
 <p align="center">
-  <img src="./img/e1.PNG" alt="ChemMiniQ3-HoriFIE Logo" width="400"/>
-  <img src="./img/e2.PNG" alt="ChemMiniQ3-HoriFIE Logo" width="400"/>
+  <img src="./img/output1.PNG" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
+  <img src="./img/output2.PNG" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
 </p>
 
 A custom Qwen3-style language model, adapted for molecular generation:
@@ -27,9 +27,9 @@ Experimental RL PPO-KL-ready features:
 
 **Pre-trained model's (non-RL) description:**
 ```
-Total parameters: 6,415,052
-Trainable parameters: 6,415,052
-Model size: ~24.5 MB (fp32)
+Model has 9,854,851 trainable parameters.
+Input shape: torch.Size([2, 32])
+Logits shape: torch.Size([2, 32, 782])
 Trained on 14k samples from combined curated dataset built from COCONUTDB (Sorokina et al., 2021),  
                             ChemBL34 (Zdrazil et al., 2023), and SuperNatural3 (Gallo et al. 2023) dataset
 Batch Size: 16 (* 4 Grad acc -> ~64)
@@ -38,26 +38,46 @@ Optimizer: Ranger21 (MADGRAD-Lookahead-AdaBelief with gradient centralization, l
 Learning rate: 5e-06 (**Warmup complete - lr set to 3.9e-06)
 
 Training log for E-1:
+Warm-up
+time	step	loss	eval_loss
+2025-09-21 11:21:20	3	26.5189	
+2025-09-21 11:21:26	6	25.7779	
+
+2nd phase with MTP
+time	step	              loss	eval_loss
+2025-09-21 11:52:07	140		
+2025-09-21 11:54:26	175	  20.4449	
+2025-09-21 11:54:41	175		        2.687195301055908
+2025-09-21 12:05:43	350	  10.405	
+2025-09-21 12:05:58	350		        1.9965996742248535
+2025-09-21 12:17:16	525	  8.9447	
+2025-09-21 12:17:31	525		        1.8333336114883423
+2025-09-21 12:28:34	700	  8.2911	
+2025-09-21 12:28:49	700		        1.7291985750198364
+2025-09-21 12:28:51	700		
 
 Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU, RAM 12 GB, 2 core Intel i3, SSD
 ```
 
 ## 🚀 Quick Start
 
+- Clone this repository
+- Make sure you have the requierements installed
 - Configurable via `config.json`
-- Run `python train-withmtp.py` to train
-- Demo for generation with rendered mol image included in `demo_test.ipynb`
+- Run `python train-withmtp.py`
+- Demo for generation with rendered mol image included in `demo_test_mtpresult.ipynb` 
 
-Tip: feel free to play around with the ChemQ3Model and its training loop/configs! The sample dataset is included so you can experiment with it~ Especially if you have better compute than mine, feel free to share your results in discussion
+Tip: feel free to play around with the ChemQ3Model and its training loop/configs! 
+The sample dataset is included so you can experiment with it~ especially if you have better compute than mine, feel free to share your results in discussion
 
 ## To-Do
 - [x] Adjust FastChemTokenizer tokenizer on new data
 - [x] Experimenting with early architecture
 - [x] Write initial readme
 - [x] Upload backbone and MTP train code
-- **[ongoing]** Demo training on 14K data (only 1 epoch, adding another on this data led to slight overfitting)
-- **[ongoing]** Upload the warmup model
-- **[ongoing]** Tidy up and upload JupyterNotebook(s) train/demo along with sample data
+- [x] Demo training on 14K data (only 1 epoch, adding another on this data led to slight overfitting)
+- [x] Upload the warmup model
+- [x] Tidy up and upload JupyterNotebook(s) train/demo along with sample data
 - **[ongoing]** Review, clean, and test codes
 - [ ] Pretraining again after auditing/reviewing the base code
 - [ ] Test RL code
@@ -71,7 +91,7 @@ Tip: feel free to play around with the ChemQ3Model and its training loop/configs
   - [ ] Chunk III
   - [ ] Chunk IV
 - [ ] Publish complete pretraining on GitHub and HF (if compatible)
-- [ ] Complete RL pretraining on verified rewards system.
+- [ ] Complete RL fine-tuning on verified rewards system.
 ---
 
 ## 📁 Project Structure
@@ -88,10 +108,11 @@ ChemZiRo-FIE/
 └── selftok_core          # FastChemTokenizer: SELFIES core used for this model, you can try _wtails 
                             if you want to experiment
 └── pretrained/
-    └── sample-e1/          # Pre-trained weights on sample 14k dataset, 1st epoch
+    └── sample-e1/              # Pre-trained weights on sample 14k dataset, 1st epoch
     └── sample-RL/ 
-└── examples/
-    └── demo-use.ipynb    # Demo script for generating SELFIES using pretrained model
+└── demo_test_mtpresult.ipynb   # Demo script for generating SELFIES using pretrained model
+└── log_train.txt               # Pre-training console outputs on MTP train
+└── data/                       # 14k samples from combined dataset
 ```
 
 ---
@@ -138,6 +159,7 @@ Based and Inspired by:
 - https://huggingface.co/gbyuvd/chemfie-gpt-experiment-1
 - https://huggingface.co/gbyuvd/bionat-selfies-gen-tokenizer-wordlevel
 - Old ChemZiRo-GPT experiment with adding RoPE, GQA, MTP, RMSProp to backbone GPT2 architecture
+
 ## References
 ### BibTeX
 #### Qwen3
@@ -209,5 +231,4 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
-
 
