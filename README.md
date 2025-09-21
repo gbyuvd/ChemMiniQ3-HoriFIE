@@ -73,7 +73,6 @@ Hardware it was trained on: Laptop with NVIDIA GeForce 930M GPU (2GB VRAM), RAM 
 Tip: feel free to play around with the ChemQ3Model and its training loop/configs! 
 The sample dataset is included so you can experiment with it~ especially if you have better compute than mine, feel free to share your results in discussion
 
-## To-Do
 - [x] Adjust FastChemTokenizer tokenizer on new data
 - [x] Experimenting with early architecture
 - [x] Write initial readme
@@ -82,10 +81,10 @@ The sample dataset is included so you can experiment with it~ especially if you 
 - [x] Upload the warmup model
 - [x] Tidy up and upload JupyterNotebook(s) train/demo along with sample data
 - **[ongoing]** Review, clean, and test codes
-- [ ] Pretraining again after auditing/reviewing the base code
-- [ ] Test RL code
-- [ ] Train for 1500 steps for max token length = 64
-- [ ] Upload RL-trained demo model
+- [x] Pretraining again after auditing/reviewing the base code
+- [x] Test RL code
+- [x] Train for 1000 steps for max token length = 80
+- [x] Upload RL-trained demo model
 - [ ] Ablation studies
 - [ ] Implement HF Automodel compatible modules if performance benefit(s) confirmed
 - [ ] Complete pretraining on all ~3M dataset (when possible)
@@ -235,6 +234,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
