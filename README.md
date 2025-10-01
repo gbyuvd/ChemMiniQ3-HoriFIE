@@ -1,7 +1,9 @@
 # 🧬 ChemMiniQ3 - with Horizon Loss on SELFIES and Biologically-Aware RL Fine-Tuning
 A lightweight experimental generative model for chemistry, built on mini **Qwen2-like backbone** with **multi-horizon predictive loss** for molecular SELFIES representations.
 
-*Prototype research code — not production-ready. Learning by building.*
+### Disclaimer: For Academic Purposes Only
+The information and model provided is for academic purposes only. It is intended for educational and research use, and should not be used for any commercial or legal purposes. The author do not guarantee the accuracy, completeness, or reliability of the information.
+
 
 <p align="center">
   <img src="./img/output1.png" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
@@ -234,6 +236,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
