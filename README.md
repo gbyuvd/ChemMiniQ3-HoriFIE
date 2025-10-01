@@ -1,5 +1,5 @@
 # 🧬 ChemMiniQ3 - with Horizon Loss on SELFIES and Biologically-Aware RL Fine-Tuning
-A lightweight experimental generative model for chemistry, built on mini **Qwen3** with **multi-horizon predictive loss** for molecular SELFIES representations.
+A lightweight experimental generative model for chemistry, built on mini **Qwen2-like backbone** with **multi-horizon predictive loss** for molecular SELFIES representations.
 
 *Prototype research code — not production-ready. Learning by building.*
 
@@ -8,9 +8,9 @@ A lightweight experimental generative model for chemistry, built on mini **Qwen3
   <img src="./img/output2.png" alt="ChemMiniQ3-HoriFIE Sample Output" width="200"/>
 </p>
 
-A custom Qwen3-style language model, adapted for molecular generation:
+A custom Qwen2-style language model, adapted for molecular generation:
 
-- ✅ **Qwen3 Architecture** – Modernized backbone with efficient attention  
+- ✅ **Qwen2-like Architecture** – Modernized backbone with efficient attention  
 - ✅ **Multi-Token Prediction (MTP Head)** – Predicts multiple future tokens (1–3) in parallel  
 - ✅ **Horizon Loss** – Weighted multi-horizon objectives for longer-term sequence coherence  
 - ✅ **SELFIES-native Tokenizer** – Robust encoding for valid molecular structures with [FastChemTokenizer](https://github.com/gbyuvd/FastChemTokenizer)
@@ -234,6 +234,7 @@ Based and Inspired by:
       year={2021},
       journal={arXiv preprint arXiv:2106.13731},
 }
+
 
 
 
